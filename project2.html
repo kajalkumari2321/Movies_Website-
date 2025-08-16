@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bollywood Movie Gallery</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    nav {
+      background: linear-gradient(45deg, darkgrey, black);
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav h2 {
+      margin: 0;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    nav ul li {
+      cursor: pointer;
+    }
+    #search-box {
+      margin: 30px auto;
+      text-align: center;
+    }
+    #search-box input {
+      padding: 10px;
+      width: 300px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    #movies-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 30px;
+    }
+    .movie-card {
+      background: white;
+      box-shadow: 0 0 5px black;
+      width: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 10px;
+    }
+    .movie-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .buttons {
+      margin-top: 10px;
+    }
+    .buttons button {
+      padding: 5px 10px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .like {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .dislike {
+      background-color: #f44336;
+      color: white;
+    }
+    .count {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    section {
+      padding: 20px;
+    }
+    #about, #contact {
+      background-color: white;
+      margin: 20px;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 5px gray;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h2>🎬 Bollywood Movie Gallery</h2>
+    <ul>
+      <li onclick="scrollToSection('home')">Home</li>
+      <li onclick="scrollToSection('about')">About</li>
+      <li onclick="scrollToSection('contact')">Contact</li>
+    </ul>
+  </nav>
+
+  <div id="search-box">
+    <input type="text" id="searchInput" placeholder="Search movies..." onkeyup="filterMovies()" />
+  </div>
+
+  <section id="home">
+    <div id="movies-section">
+      
+      <div class="movie-card">
+        <img src="https://i.ytimg.com/vi/lLIUhAVTFPQ/maxresdefault.jpg" alt="Kiyo ki">
+        <h1>Kiyo ki</h1>
+        <div class="buttons">
+          <button class="like" onclick="updateCount(this, 'like')">Like</button>
+          <button class="dislike" onclick="updateCount(this, 'dislike')">Dislike</button>
+          <div class="count">Likes: 0 | Dislikes: 0</div>
+        </div>
+      </div>
+
+      <div class="movie-card">
+        <img src="https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2024/11/war-1732957905.jpg" alt="Sikandar">
+        <h2>Sikandar</h2>
+        <div class="buttons">
+          <button class="like" onclick="updateCount(this, 'like')">Like</button>
+          <button class="dislike" onclick="updateCount(this, 'dislike')">Dislike</button>
+          <div class="count">Likes: 0 | Dislikes: 0</div>
+        </div>
+      </div>
+
+      <div class="movie-card">
+       <img src="https://i.ytimg.com/vi/PU9WNnN-NDc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCazzkR2yxnJEHvlaSXVQBq0Csz4A.jpg" alt="Image Not Found">
+            <h3>Biwi No.1</h3>
+        <div class="buttons">
+          <button class="like" onclick="updateCount(this, 'like')">Like</button>
+          <button class="dislike" onclick="updateCount(this, 'dislike')">Dislike</button>
+          <div class="count">Likes: 0 | Dislikes: 0</div>
+        </div>
+      </div>
+      <div class="movie-card">
+            <img src="https://i.ytimg.com/vi/AsxolgfpUEE/maxresdefault.jpg" alt="Image Not Found">
+            <h4>Yeh Hai Jalwa</h4>
+        <div class="buttons">
+          <button class="like" onclick="updateCount(this, 'like')">Like</button>
+          <button class="dislike" onclick="updateCount(this, 'dislike')">Dislike</button>
+          <div class="count">Likes: 0 | Dislikes: 0</div>
+        </div>
+      </div>
+      
+      <div class="movie-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfsv5a3BOFMQFgFCqVZQOMV6VfahJ-W0q_Dw&s.jpg" alt="Image Not Found">
+            <h1>Pyar Kiya  to Darna Kya</h1>
+        <div class="buttons">
+          <button class="like" onclick="updateCount(this, 'like')">Like</button>
+          <button class="dislike" onclick="updateCount(this, 'dislike')">Dislike</button>
+          <div class="count">Likes: 0 | Dislikes: 0</div>
+        </div>
+      </div>
+      <div class="movie-card">
+           <img src="https://resize.indiatv.in/resize/oldbucket/1200_-/entertainmentbollywood/IndiaTv50420d_salman-sonam.jpg" alt="Image Not Found">
+            <h2>Prem Ratan Dhan Payo</h2>
+        <div class="buttons">
+          <button class="like" onclick="updateCount(this, 'like')">Like</button>
+          <button class="dislike" onclick="updateCount(this, 'dislike')">Dislike</button>
+          <div class="count">Likes: 0 | Dislikes: 0</div>
+        </div>
+      </div>
+      <div class="movie-card">
+             <img src="https://i.ytimg.com/vi/1n8OHOb1UnE/maxresdefault.jpg" alt="Image Not Found">
+            <h4>Kick</h4>
+
+        <div class="buttons">
+          <button class="like" onclick="updateCount(this, 'like')">Like</button>
+          <button class="dislike" onclick="updateCount(this, 'dislike')">Dislike</button>
+          <div class="count">Likes: 0 | Dislikes: 0</div>
+        </div>
+      </div>
+      <div class="movie-card">
+           <img src="https://m.media-amazon.com/images/M/MV5BMmVlMGE4ODYtNDczZS00MTk4LTk5NDEtNzhhYTEwYTA3YjU1XkEyXkFqcGc@._V1_.jpg" alt="Image Not Found">
+            <h1>Movie Jaan-E-Mann</h1>
+        <div class="buttons">
+          <button class="like" onclick="updateCount(this, 'like')">Like</button>
+          <button class="dislike" onclick="updateCount(this, 'dislike')">Dislike</button>
+          <div class="count">Likes: 0 | Dislikes: 0</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function updateCount(button, type) {
+      const countDiv = button.parentElement.querySelector('.count');
+      let [likesText, dislikesText] = countDiv.textContent.split('|');
+      let likes = parseInt(likesText.replace('Likes:', '').trim());
+      let dislikes = parseInt(dislikesText.replace('Dislikes:', '').trim());
+
+      if (type === 'like') likes++;
+      else dislikes++;
+
+      countDiv.textContent = `Likes: ${likes} | Dislikes: ${dislikes}`;
+    }
+
+    function filterMovies() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.movie-card');
+      cards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        card.style.display = title.includes(input) ? 'block' : 'none';
+      });
+    }
+
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
